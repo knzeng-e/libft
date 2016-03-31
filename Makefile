@@ -6,7 +6,7 @@
 #    By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/13 19:06:45 by knzeng-e          #+#    #+#              #
-#    Updated: 2016/03/30 18:54:47 by knzeng-e         ###   ########.fr        #
+#    Updated: 2016/03/31 19:49:23 by knzeng-e         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,18 @@ NAME = libft.a
 
 CC = gcc
 
-SRCS = *.c
+SRCS = ./srcs/*.c
 
 OBJ = *.o
 
-HEAD = libft.h
+HEAD = ./includes
 
 FLAGS = -Wall -Werror -Wextra
 
 $(NAME): all
 
 all:
-	@$(CC) -c $(FLAGS) $(SRCS)
+	@$(CC) -c $(FLAGS) -I$(HEAD) $(SRCS)
 	@#$(CC) $(OBJ) -o $(NAME)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
