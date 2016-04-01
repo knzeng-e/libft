@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 05:45:00 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/03/31 15:55:29 by knzeng-e         ###   ########.fr       */
+/*   Created: 2016/04/01 01:24:56 by knzeng-e          #+#    #+#             */
+/*   Updated: 2016/04/01 02:38:53 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int	sign;
-	int	number;
-	int	i;
+	t_list *list;
 
-	number = 0;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	sign = (1 - 2 * (str[i] == '-'));
-	if ((str[i] == '+') || (str[i] == '-'))
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*alst)
 	{
-		number *= 10;
-		number += (str[i] - '0');
-		i++;
+		list = *alst;
+		ft_lstdelone(&list, del);
+		*alst = (*alst)->next;
 	}
-	return (sign * number);
+	*alst = NULL;
 }

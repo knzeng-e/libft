@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 05:45:00 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/03/31 15:55:29 by knzeng-e         ###   ########.fr       */
+/*   Created: 2016/04/01 01:32:19 by knzeng-e          #+#    #+#             */
+/*   Updated: 2016/04/01 01:32:32 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+t_list	*ft_create_elem(void *data, size_t size_content)
 {
-	int	sign;
-	int	number;
-	int	i;
+	t_list	*list;
 
-	number = 0;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	sign = (1 - 2 * (str[i] == '-'));
-	if ((str[i] == '+') || (str[i] == '-'))
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	list = NULL;
+	list = (t_list*)malloc(sizeof(t_list));
+	if (list)
 	{
-		number *= 10;
-		number += (str[i] - '0');
-		i++;
+		list->content = ft_memalloc(size_content);
+		list->content = data;
+		list->content_size = size_content;
+		list->next = NULL;
 	}
-	return (sign * number);
+	return (list);
 }

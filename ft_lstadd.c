@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 05:45:00 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/03/31 15:55:29 by knzeng-e         ###   ########.fr       */
+/*   Created: 2016/04/01 01:24:07 by knzeng-e          #+#    #+#             */
+/*   Updated: 2016/04/01 01:24:30 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int	sign;
-	int	number;
-	int	i;
-
-	number = 0;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	sign = (1 - 2 * (str[i] == '-'));
-	if ((str[i] == '+') || (str[i] == '-'))
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (new)
 	{
-		number *= 10;
-		number += (str[i] - '0');
-		i++;
+		new->next = *alst;
+		*alst = new;
 	}
-	return (sign * number);
 }

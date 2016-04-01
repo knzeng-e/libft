@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 01:05:00 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/03/26 11:43:32 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/04/01 05:09:49 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		*ft_strrev(char *str)
 	char	*out;
 
 	i = ft_len(str);
-	out = (char *)malloc(sizeof(char) * i + 1);
+	out = (char *)malloc(sizeof(char) * i);
 	if (out)
 	{
 		j = 0;

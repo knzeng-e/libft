@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 05:45:00 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/03/31 15:55:29 by knzeng-e         ###   ########.fr       */
+/*   Created: 2016/04/01 01:27:06 by knzeng-e          #+#    #+#             */
+/*   Updated: 2016/04/01 01:27:33 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int	sign;
-	int	number;
-	int	i;
+	t_list	*new;
+	t_list	*rend;
+	t_list	*tmp;
 
-	number = 0;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	sign = (1 - 2 * (str[i] == '-'));
-	if ((str[i] == '+') || (str[i] == '-'))
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	new = NULL;
+	while (lst)
 	{
-		number *= 10;
-		number += (str[i] - '0');
-		i++;
+		tmp = (*f)(lst);
+		if (!(new))
+		{
+			new = ft_lstnew(tmp->content, tmp->content_size);
+			rend = new;
+			new->next = NULL;
+		}
+		else
+		{
+			new->next = ft_lstnew(tmp->content, tmp->content_size);
+			new = new->next;
+			new->next = NULL;
+			tmp = NULL;
+		}
+		lst = lst->next;
 	}
-	return (sign * number);
+	return (rend);
 }

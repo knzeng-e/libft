@@ -6,7 +6,7 @@
 /*   By: knzeng-e <knzeng-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/13 21:40:10 by knzeng-e          #+#    #+#             */
-/*   Updated: 2016/03/21 20:19:02 by knzeng-e         ###   ########.fr       */
+/*   Updated: 2016/03/31 19:39:46 by knzeng-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	char	*s_;
+	size_t	i;
 
-	s_ = (char *)s;
-	if (!(*s_))
-		return (0);
-	return (1 + ft_strlen(++s_));
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
